@@ -6,10 +6,22 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import LeftSide from '../LeftSide/LeftSide';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthPro/AuthPro';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 const Header = () => {
 
-    const {user} =useContext(AuthContext)
+    const {user, logOut} =useContext(AuthContext)
+
+
+    const handleLogout = () => {
+
+
+      logOut()
+      .then(() => {
+
+      })
+      .catch(error => console.error(error))
+
+    }
 
 
 
@@ -35,11 +47,32 @@ const Header = () => {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+              <Nav.Link href="#deets">
+                
+                {user?.uid 
+                        ? 
+                
+                                 <>
+                                   <span>{user?.displayName}</span>
+                                   <Button variant='light'
+                                   onClick={handleLogout}
+                                   >LogOut</Button>
+                                 </> 
+                                 :
+                <>
+                  <Link to='/login'>Login</Link>
+                  <Link to='/register'>Register</Link>
+                </>
+                
+                
+                }
+       
+                
+                </Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
-              {user.photoURL ? <Image 
+               {user?.photoURL ? <Image 
               style={{height:'30px'}}
-              roundedCircle src={user.photoURL}></Image>: 'hello'}
+              roundedCircle src={user.photoURL}></Image>: "hello"}   
               </Nav.Link>
             </Nav>
 

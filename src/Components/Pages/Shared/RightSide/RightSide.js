@@ -3,17 +3,21 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGithub, FaFacebook, FaTwitch,FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
-import { GoogleAuthProvider } from "firebase/auth";
+// import { GoogleAuthProvider } from "firebase/auth";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Carousel } from 'react-bootstrap/Carousel';
 import Carouse from '../Carousel/Carouse';
 import { AuthContext } from '../../../../Context/AuthPro/AuthPro';
+import { GoogleAuthProvider } from 'firebase/auth';
+// import { GoogleAuthProvider } from 'firebase/auth';
 const RightSide = () => {
 
   
-   const {providerLogin} =useContext(AuthContext)
+   const {providerLogin} =useContext(AuthContext);
    
-   const googleProvider =new GoogleAuthProvider();
+   const googleProvider =new GoogleAuthProvider()
+
+
   const handleGoogleSignIn = () => {
 
     providerLogin(googleProvider)
