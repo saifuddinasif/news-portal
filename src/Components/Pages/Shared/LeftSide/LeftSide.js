@@ -16,7 +16,7 @@ useEffect(() => {
 
     return (
 <>
-        <h1>All Category :  {categories.length}</h1>
+        <h3 className='d-none d-lg-block'>All Category :{categories.length}</h3>
         <div>
         
      {

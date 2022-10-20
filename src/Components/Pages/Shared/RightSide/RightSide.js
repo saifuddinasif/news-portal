@@ -14,11 +14,7 @@ const RightSide = () => {
       <Button variant="outline-dark"> <FaGithub></FaGithub> Login With GitHub</Button>
 
     </ButtonGroup>
-
-
-       <h2> Find Us On </h2>
- 
-                     
+       <h2> Find Us On </h2>            
                       <div>
                       <ListGroup>
   
