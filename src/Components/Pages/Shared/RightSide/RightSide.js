@@ -8,22 +8,24 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Carousel } from 'react-bootstrap/Carousel';
 import Carouse from '../Carousel/Carouse';
 import { AuthContext } from '../../../../Context/AuthPro/AuthPro';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider } from "firebase/auth";
 // import { GoogleAuthProvider } from 'firebase/auth';
 const RightSide = () => {
 
   
    const {providerLogin} =useContext(AuthContext);
    
-   const googleProvider =new GoogleAuthProvider()
+   const googleProvider =new GoogleAuthProvider();
 
 
    const handleGoogleSignIn = () => {
-
-    providerLogin(googleProvider)
+  
+       console.log("first")
+   
+        providerLogin(googleProvider)
 
         .then(result => {
-          
+         
             const user = result.user;
             console.log(user);
         })

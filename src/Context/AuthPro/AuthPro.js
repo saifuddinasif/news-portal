@@ -14,8 +14,8 @@ const AuthPro = ({children}) => {
 
 
     const providerLogin = (provider) => {
-        setLoading(true)
-     return signInWithPopup(auth,provider,logOut)
+        // setLoading(true)
+     return signInWithPopup(auth,provider)
     }
 
       const signIn = (email,password) => {

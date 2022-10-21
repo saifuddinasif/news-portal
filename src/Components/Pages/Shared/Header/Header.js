@@ -7,6 +7,7 @@ import LeftSide from '../LeftSide/LeftSide';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthPro/AuthPro';
 import { Button, Image } from 'react-bootstrap';
+import { FaUser } from 'react-icons/fa';
 const Header = () => {
 
     const {user, logOut} =useContext(AuthContext)
@@ -33,18 +34,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#features">All News</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+       
             </Nav>
             <Nav>
               <Nav href="#deets">
@@ -59,20 +49,22 @@ const Header = () => {
                                    >LogOut</Button>
                                  </> 
                                  :
-                <>
-                  <Link to='/login'>Login</Link>
-                  <Link to='/register'>Register</Link>
-                </>
+                <div  >
+           <Button   className='m-2' variant="outline-primary"><Link bg="danger"  text="dark"  to='/login'>Login</Link></Button>
+
+                <Button variant="outline-warning"><Link to='/register'>Register</Link></Button>  
+                </div>
                 
                 
                 }
        
                 
-                </Nav>
-              <Link  to="/profile">
+                </Nav >
+
+              <Link  className='m-2 ' to="/profile">
                {user?.photoURL ? <Image 
               style={{height:'30px'}}
-              roundedCircle src={user.photoURL}></Image>: "hello"}   
+              roundedCircle src={user.photoURL}></Image>: <FaUser></FaUser>}   
               </Link>
             </Nav>
 
