@@ -7,6 +7,7 @@ import News from "../Components/Pages/Shared/News/News";
 import Register from "../Components/Pages/Shared/Register.js/Register";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import TermsCon from './../Components/Pages/TermsCon/TermsCon';
+import Profile from "./Profile/Profile";
 
 
 
@@ -61,6 +62,13 @@ export const routes = createBrowserRouter([
         path : '/terms',
 
         element:<TermsCon></TermsCon>,
+        
+       },
+
+       {
+        path : '/profile',
+
+        element:<PrivateRoutes><Profile></Profile></PrivateRoutes>,
         
        }
 
