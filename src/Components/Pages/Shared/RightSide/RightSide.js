@@ -18,21 +18,18 @@ const RightSide = () => {
    const googleProvider =new GoogleAuthProvider()
 
 
-  const handleGoogleSignIn = () => {
+   const handleGoogleSignIn = () => {
 
     providerLogin(googleProvider)
 
-    .then(result => {
-   
-       const user = result.user;
+        .then(result => {
+          
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+}
 
-       console.log(user)
-
-    })
-    .catch(error => console.error(error))
-
-
-  }
     return (
         <div>
           <ButtonGroup vertical>

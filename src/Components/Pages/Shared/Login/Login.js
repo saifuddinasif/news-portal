@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
   const {signIn} = useContext(AuthContext);
 
-//   
+    const [error , setError] = useState('')   
 
 
   const handleSubmit = event => {
@@ -31,9 +31,14 @@ const Login = () => {
             console.log(user);
             form.reset()
             navigate('/')
+            setError('')
 
          })
-         .catch(error => console.error(error))
+         .catch(error => {
+          
+          setError(error.message)
+        
+        })
 
 
 
@@ -53,12 +58,11 @@ const Login = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password"  name='password' placeholder="Password" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
+     
+        <Button  variant="primary" type="submit">
           Submit
         </Button>
+        <Form.Text className='text-danger' >{error}</Form.Text>
       </Form>
     );
 };

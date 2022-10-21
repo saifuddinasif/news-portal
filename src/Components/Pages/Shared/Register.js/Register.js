@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from './../../../../Context/AuthPro/AuthPro';
@@ -6,21 +6,22 @@ const Register = () => {
  
     const {createUser} =useContext(AuthContext)
 
+    const [error,setError] = useState();
+
+
  const handleSubmit = (e) => {
 
- 
 
       e.preventDefault()
 
       const form = e.target;
-
       const name = form.name.value;
       const email = form.email.value;
       const password = form.password.value;
       const photoURL = form.photoURL.value;
   
       
-      console.log(name,photoURL, email,password)
+      console.log(name,photoURL,email,password)
 
 
       createUser(email,password)
@@ -29,15 +30,18 @@ const Register = () => {
         const user = result.user;
 
         console.log(user);
+        setError('')
         form.reset()
+  
 
       })
-      .catch(e =>  console.error(e));
+      .catch(e => { 
+        
+        console.error(e)
+      
+        setError(e.message);
 
-
-
-
-
+      });
  } 
 
     return (
@@ -74,6 +78,7 @@ const Register = () => {
         <Button variant="primary" type="submit">
       Register 
         </Button>
+        <p className='text-danger'>{error}</p>
       </Form>
     );
 };
