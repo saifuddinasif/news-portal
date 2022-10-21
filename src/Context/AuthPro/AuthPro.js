@@ -11,22 +11,25 @@ const auth = getAuth(app)
 
 const AuthPro = ({children}) => {
   
+
+    const [loading,setLoading] = useState(true);
+
     const [user,setUser] = useState(null);
 
 
     const providerLogin = (provider) => {
-
+        setLoading(true)
      return signInWithPopup(auth,provider,logOut)
     }
 
       const signIn = (email,password) => {
-         
+         setLoading(true)
       return signInWithEmailAndPassword(auth,email,password)
 
       }
 
        const logOut = () => {
-
+        setLoading(true)
         return signOut(auth)
     }
 
@@ -36,6 +39,8 @@ const AuthPro = ({children}) => {
 
             console.log("object",currentUser);
             setUser(currentUser)
+            setLoading(false);
+
            })
 
            return () => {
@@ -45,11 +50,11 @@ const AuthPro = ({children}) => {
  },[])
 
         const createUser = (email,password) => {
-
+            setLoading(true)
             return createUserWithEmailAndPassword(auth,email,password)
         }
 
-    const authInfo ={user,providerLogin,logOut,createUser, signIn}
+    const authInfo ={loading, user,providerLogin,logOut,createUser, signIn}
 
     return (
         <AuthContext.Provider value={ authInfo}>
